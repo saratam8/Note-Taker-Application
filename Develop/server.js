@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 const notesData = require('./db/db.json');
+const fs = require('fs');
 
 // const api = require('./routes/index');
 
@@ -26,6 +27,28 @@ app.get('/notes', (req, res) =>
 );
 
 app.get('/api/notes', (req, res) => res.json(notesData));
+
+app.post('/api/notes', (req, res) => {
+    console.log("POST success");
+
+    let storedNotes = fs.readFileSync("./db/db.json", "utf-8");
+    let parsedNotes = JSON.parse(storedNotes);
+
+    const {title, text} = req.body;
+
+    const newNote = {
+        title,
+        text,
+    };
+
+    parsedNotes.push(newNote);
+
+    storedNotes = JSON.stringify(parsedNotes);
+
+    fs.writeFileSync("./db/db.json", storedNotes, "utf-8");
+
+    // notesData = 
+});
 
 app.listen(PORT, () =>
     console.log(`http://localhost:${PORT}`)
