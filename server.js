@@ -50,6 +50,7 @@ app.post('/api/notes', (req, res) => {
     parsedNotes.push(newNote);
 
     storedNotes = JSON.stringify(parsedNotes, null, 4);
+    res.redirect('/notes');
 
     fs.writeFileSync("./db/db.json", storedNotes, "utf-8");
 });
@@ -76,6 +77,7 @@ app.delete(`/api/notes/:id`, (req, res) => {
 
     // Writing the new notes list to a new db.json 
     storedNotes = JSON.stringify(parsedNotes, null, 4);
+    res.redirect('/notes');
 
     fs.writeFileSync("./db/db.json", storedNotes, "utf-8");
 });
