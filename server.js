@@ -84,6 +84,10 @@ app.delete(`/api/notes/:id`, (req, res) => {
     fs.writeFileSync("./db/db.json", storedNotes, "utf-8");
 });
 
+app.get('*', (req, res) => 
+    res.sendFile(path.join(_dirname, './public/index.html'))
+);
+
 // Listen to the port
 app.listen(PORT, () =>
     console.log(`http://localhost:${PORT}`)
