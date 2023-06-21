@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Finish Homework",
+        "text": "- Complete quality README\n- Deploy onto Heroku",
+        "id": "b413"
+    },
+    {
+        "title": "Practice LeetCode",
+        "text": "I want a new job so practice LeetCode!",
+        "id": "8b06"
+    },
+    {
+        "title": "Start Personal Project",
+        "text": "Need to start a quality personal project that can demonstrate all the coding skills I have learned.",
+        "id": "809c"
+    }
+]

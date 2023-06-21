@@ -45,7 +45,7 @@ app.post('/api/notes', (req, res) => {
 
     parsedNotes.push(newNote);
 
-    storedNotes = JSON.stringify(parsedNotes);
+    storedNotes = JSON.stringify(parsedNotes, null, 4);
 
     fs.writeFileSync("./db/db.json", storedNotes, "utf-8");
 });
@@ -68,7 +68,7 @@ app.delete(`/api/notes/:id`, (req, res) => {
         }
     }
 
-    storedNotes = JSON.stringify(parsedNotes);
+    storedNotes = JSON.stringify(parsedNotes, null, 4);
 
     fs.writeFileSync("./db/db.json", storedNotes, "utf-8");
 });
