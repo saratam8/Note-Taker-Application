@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 const notesData = require('./db/db.json');
+const uuid = require('./helpers/uuid');
 const fs = require('fs');
 
 // const api = require('./routes/index');
@@ -39,6 +40,7 @@ app.post('/api/notes', (req, res) => {
     const newNote = {
         title,
         text,
+        id: uuid(),
     };
 
     parsedNotes.push(newNote);
@@ -46,9 +48,9 @@ app.post('/api/notes', (req, res) => {
     storedNotes = JSON.stringify(parsedNotes);
 
     fs.writeFileSync("./db/db.json", storedNotes, "utf-8");
-
-    // notesData = 
 });
+
+// app.delete('/api/notes', (req, res) => res.json(`DELETE route`));
 
 app.listen(PORT, () =>
     console.log(`http://localhost:${PORT}`)
