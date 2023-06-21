@@ -25,6 +25,8 @@ app.get('/notes', (req, res) =>
     res.sendFile(publicPath +  '/notes.html')
 );
 
+app.get('/api/notes', (req, res) => res.json(notesData));
+
 app.listen(PORT, () =>
     console.log(`http://localhost:${PORT}`)
 );
