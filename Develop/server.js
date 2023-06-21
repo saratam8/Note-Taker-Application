@@ -50,7 +50,28 @@ app.post('/api/notes', (req, res) => {
     fs.writeFileSync("./db/db.json", storedNotes, "utf-8");
 });
 
-// app.delete('/api/notes', (req, res) => res.json(`DELETE route`));
+app.delete(`/api/notes/:id`, (req, res) => {
+    console.log("DELETE success");
+    console.log(req.params.id);
+
+    const requestedDelete = req.params.id;
+
+    let storedNotes = fs.readFileSync("./db/db.json", "utf-8");
+    let parsedNotes = JSON.parse(storedNotes);
+    console.log(parsedNotes);
+
+    for(let i = 0; i < parsedNotes.length; i++){
+        if(requestedDelete == parsedNotes[i].id){
+            console.log("found match");
+            parsedNotes.splice(i, 1);
+            console.log(parsedNotes);
+        }
+    }
+
+    storedNotes = JSON.stringify(parsedNotes);
+
+    fs.writeFileSync("./db/db.json", storedNotes, "utf-8");
+});
 
 app.listen(PORT, () =>
     console.log(`http://localhost:${PORT}`)
