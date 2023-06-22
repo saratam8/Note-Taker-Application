@@ -12,10 +12,15 @@ Node.js must be installed on the machine that this application is running on. Ex
 
 To use this application, open the projec in the terminal of your choice. Run the command "node server.js". You can then open the landing page at the appropriate port and start taking notes.
 
+## Deployed Application
+
+https://note-taker-app81-9234b8f4afc5.herokuapp.com/
+
 ## Technology Used
 
 * Node.js
 * Express
+* Heroku
 
 ## Resources Used
 
