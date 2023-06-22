@@ -27,7 +27,11 @@ app.get('/notes', (req, res) =>
 );
 
 // GET to notes page so that notes in db.json can be used
-app.get('/api/notes', (req, res) => res.json(notesData));
+app.get('/api/notes', (req, res) => { 
+    fs.readFile('./db/db.json', 'utf8', (err, data) => { 
+        res.json(JSON.parse(data))
+    })
+});
 
 app.post('/api/notes', (req, res) => {
     console.log("POST success");
